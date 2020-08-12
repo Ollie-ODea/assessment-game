@@ -28,8 +28,8 @@ namespace assessment_game
             y = 10;
             width = 30;
             height = 30;
-            rotationAngle = 0;
             speed = 4;
+            rotationAngle = 0;
             //planetImage contains the BluePlane.png image
             BluePlaneImage = Properties.Resources.BluePlane;
             BluePlaneRec = new Rectangle(x, y, width, height);
