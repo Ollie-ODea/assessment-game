@@ -14,20 +14,85 @@ namespace assessment_game
     {
         Graphics g; //declare a graphics object called g
         BluePlane BluePlane = new BluePlane(); //create the object, BluePlane
+        Enemy1 Enemy1 = new Enemy1(); //create the object, BluePlane
+        bool turnLeft, turnRight, up, shoot;
+        List<Missile> missiles = new List<Missile>();
 
         public FrmGame()
+
         {
             InitializeComponent();
         }
-
-        private void PnlGame_Paint(object sender, PaintEventArgs e)
+        //Movement tick
+        private void tmrBluePlane_Tick(object sender, EventArgs e)
         {
-            //get the graphics used to paint on the panel control
+            if (turnRight)
+            {
+                BluePlane.rotationAngle += 4;
+            }
+            if (turnLeft)
+            {
+                BluePlane.rotationAngle -= 4;
+            }
+            if (up) // if left arrow key pressed
+            {
+                BluePlane.speed += 1;
+                BluePlane.MoveBluePlane();
+                BluePlane.Rotateplane(BluePlane.rotationAngle, BluePlane.speed);
+            }
+            if (shoot)
+            {
+                missiles.Add(new Missile(BluePlane.BluePlaneRec, BluePlane.rotationAngle));
+            }
+            Invalidate();
+        }
+
+        private void tmrEnemyPlane_Tick(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void FrmGame_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+
+        //Paint events
+        private void FrmGame_Paint(object sender, PaintEventArgs e)
+        {
+            //get the graphics used to paint on the Form control
             g = e.Graphics;
-            //call the BluePlane class's DrawPlanet method to draw the image BluePlane 
+            //Draw enemy plane
+            Enemy1.DrawEnemy1(g);
+            //Draw the BluePlane
             BluePlane.DrawBluePlane(g);
 
-        } 
-    }
 
+            foreach (Missile m in missiles)
+            {
+                m.drawMissile(g);
+                m.moveMissile(g);
+            }
+        }
+        //Key events
+        private void FrmGame_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { turnLeft = false; }
+            if (e.KeyData == Keys.Right) { turnRight = false; }
+            if (e.KeyData == Keys.Up) { up = false; }
+            if (e.KeyData == Keys.Space) { shoot = false; }
+        }
+        private void FrmGame_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { turnLeft = true; }
+            if (e.KeyData == Keys.Right) { turnRight = true; }
+            if (e.KeyData == Keys.Up) { up = true; }
+            if (e.KeyData == Keys.Space)
+            {
+                shoot = true;
+            }
+        }
+
+    }
 }

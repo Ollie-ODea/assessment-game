@@ -83,6 +83,16 @@ namespace assessment_game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap missile_small {
+            get {
+                object obj = ResourceManager.GetObject("missile_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap RedPlane {
             get {
                 object obj = ResourceManager.GetObject("RedPlane", resourceCulture);

@@ -28,35 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.PnlGame = new System.Windows.Forms.Panel();
+            this.components = new System.ComponentModel.Container();
+            this.tmrBluePlane = new System.Windows.Forms.Timer(this.components);
+            this.tmrEnemyPlane = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // PnlGame
+            // tmrBluePlane
             // 
-            this.PnlGame.BackColor = System.Drawing.Color.Bisque;
-            this.PnlGame.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.PnlGame.Location = new System.Drawing.Point(0, 0);
-            this.PnlGame.Name = "PnlGame";
-            this.PnlGame.Size = new System.Drawing.Size(750, 460);
-            this.PnlGame.TabIndex = 0;
-            this.PnlGame.UseWaitCursor = true;
-            this.PnlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlGame_Paint);
+            this.tmrBluePlane.Enabled = true;
+            this.tmrBluePlane.Interval = 1;
+            this.tmrBluePlane.Tick += new System.EventHandler(this.tmrBluePlane_Tick);
+            // 
+            // tmrEnemyPlane
+            // 
+            this.tmrEnemyPlane.Interval = 3;
+            this.tmrEnemyPlane.Tick += new System.EventHandler(this.tmrEnemyPlane_Tick);
             // 
             // FrmGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 461);
-            this.Controls.Add(this.PnlGame);
+            this.DoubleBuffered = true;
             this.Name = "FrmGame";
             this.Text = "Fight or Flight";
+            this.Load += new System.EventHandler(this.FrmGame_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FrmGame_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmGame_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmGame_KeyUp);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel PnlGame;
+        private System.Windows.Forms.Timer tmrBluePlane;
+        private System.Windows.Forms.Timer tmrEnemyPlane;
     }
 }
 
