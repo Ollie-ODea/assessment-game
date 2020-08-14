@@ -24,12 +24,12 @@ namespace assessment_game
         //Create a constructor (initialises the values of the fields)
         public BluePlane()
         {
-            x = 10;
-            y = 10;
+            x = 100;
+            y = 100;
             width = 30;
             height = 30;
-            speed = 4;
-            rotationAngle = 0;
+            speed = 10;
+            rotationAngle = 180;
             //planetImage contains the BluePlane.png image
             BluePlaneImage = Properties.Resources.BluePlane;
             BluePlaneRec = new Rectangle(x, y, width, height);
@@ -58,10 +58,10 @@ namespace assessment_game
             y -= (int)ySpeed;
             BluePlaneRec.Location = new Point(x, y);//missiles new location
         }
-        public void Rotateplane(int BluePlaneRotate, int speed)
+        public void Rotateplane(int BluePlaneRotate, int Speed)
         {
-            xSpeed = speed * (Math.Cos((BluePlaneRotate - 90) * Math.PI / 180));
-            ySpeed = speed * (Math.Sin((BluePlaneRotate + 90) * Math.PI / 180));
+            xSpeed = Speed * (Math.Cos((BluePlaneRotate - 90) * Math.PI / 180));
+            ySpeed = Speed * (Math.Sin((BluePlaneRotate + 90) * Math.PI / 180));
         }
     }
 }

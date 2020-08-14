@@ -36,7 +36,7 @@
             // tmrBluePlane
             // 
             this.tmrBluePlane.Enabled = true;
-            this.tmrBluePlane.Interval = 1;
+            this.tmrBluePlane.Interval = 5;
             this.tmrBluePlane.Tick += new System.EventHandler(this.tmrBluePlane_Tick);
             // 
             // tmrEnemyPlane
@@ -48,7 +48,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 461);
+            this.ClientSize = new System.Drawing.Size(1484, 761);
             this.DoubleBuffered = true;
             this.Name = "FrmGame";
             this.Text = "Fight or Flight";

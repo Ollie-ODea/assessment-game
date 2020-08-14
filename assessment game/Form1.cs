@@ -15,7 +15,7 @@ namespace assessment_game
         Graphics g; //declare a graphics object called g
         BluePlane BluePlane = new BluePlane(); //create the object, BluePlane
         Enemy1 Enemy1 = new Enemy1(); //create the object, BluePlane
-        bool turnLeft, turnRight, up, shoot, move;
+        bool turnLeft, turnRight, up, down, shoot;
         List<Missile> missiles = new List<Missile>();
 
         public FrmGame()
@@ -26,6 +26,7 @@ namespace assessment_game
         //Movement tick
         private void tmrBluePlane_Tick(object sender, EventArgs e)
         {
+            
             if (turnRight)
             {
                 BluePlane.rotationAngle += 4;
@@ -36,22 +37,38 @@ namespace assessment_game
             }
             if (up) // if left arrow key pressed
             {
-                if (BluePlane.speed != 8)
+                if (BluePlane.speed != 10)
                 {
                     BluePlane.speed += 1;
                 }
-                BluePlane.MoveBluePlane();
+            }
+            if (down) // if left arrow key pressed
+            {
+                if (BluePlane.speed != 3)
+                {
+                    BluePlane.speed -= 1;
+                }
+            }
+            if (up != true) // if left arrow key pressed
+            {
+                if (BluePlane.speed > 6)
+                {
+                    BluePlane.speed -= 1;
+                }
+            }
+            if (down != true) // if left arrow key pressed
+            {
+                if (BluePlane.speed < 6)
+                {
+                    BluePlane.speed += 1;
+                }
             }
             if (shoot)
             {
                 missiles.Add(new Missile(BluePlane.BluePlaneRec, BluePlane.rotationAngle));
             }
-            if (move)
-            {
-                BluePlane.speed = 4;
-            }
             BluePlane.Rotateplane(BluePlane.rotationAngle, BluePlane.speed);
-
+            BluePlane.MoveBluePlane();
             Invalidate();
         }
 
@@ -88,7 +105,8 @@ namespace assessment_game
         {
             if (e.KeyData == Keys.Left) { turnLeft = false; }
             if (e.KeyData == Keys.Right) { turnRight = false; }
-  //          if (e.KeyData == Keys.Up) { up = false; }
+            if (e.KeyData == Keys.Up) { up = false; }
+            if (e.KeyData == Keys.Down) { down = false; }
             if (e.KeyData == Keys.Space) { shoot = false; }
         }
         private void FrmGame_KeyDown(object sender, KeyEventArgs e)
@@ -96,11 +114,11 @@ namespace assessment_game
             if (e.KeyData == Keys.Left) { turnLeft = true; }
             if (e.KeyData == Keys.Right) { turnRight = true; }
             if (e.KeyData == Keys.Up) { up = true; }
+            if (e.KeyData == Keys.Down) { down = true; }
             if (e.KeyData == Keys.Space)
             {
                 shoot = true;
             }
-            if (e.KeyData == Keys.Shift) { move = true; }
         }
 
     }
