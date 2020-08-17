@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,7 @@ namespace assessment_game
         Enemy1 Enemy1 = new Enemy1(); //create the object, BluePlane
         bool turnLeft, turnRight, up, down, shoot;
         List<Missile> missiles = new List<Missile>();
+        int BluePlanePosX, BluePlanePosY, Enemy1PosX, Enemy1PosY;
 
         public FrmGame()
 
@@ -69,7 +71,19 @@ namespace assessment_game
             }
             BluePlane.Rotateplane(BluePlane.rotationAngle, BluePlane.speed);
             BluePlane.MoveBluePlane();
+            Enemy1.MoveEnemy1();
+            Enemy1.RotateEnemy1();
+
+
+            BluePlanePosX = BluePlane.BluePlaneRec.Location.X;
+            BluePlanePosY = BluePlane.BluePlaneRec.Location.Y;
+            Enemy1PosX = Enemy1.Enemy1Rec.Location.X;
+            Enemy1PosY = Enemy1.Enemy1Rec.Location.Y;
+
+            Enemy1.rotationAngle = (int)Enemy1.CalculateAngle(Enemy1PosX, Enemy1PosY, BluePlanePosX, BluePlanePosY);
             Invalidate();
+
+            
         }
 
         private void tmrEnemyPlane_Tick(object sender, EventArgs e)
