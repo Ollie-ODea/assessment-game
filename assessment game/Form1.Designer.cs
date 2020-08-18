@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.tmrBluePlane = new System.Windows.Forms.Timer(this.components);
             this.tmrEnemyPlane = new System.Windows.Forms.Timer(this.components);
+            this.StaminaBar = new System.Windows.Forms.ProgressBar();
+            this.Staminatmr = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // tmrBluePlane
@@ -44,11 +46,25 @@
             this.tmrEnemyPlane.Interval = 3;
             this.tmrEnemyPlane.Tick += new System.EventHandler(this.tmrEnemyPlane_Tick);
             // 
+            // StaminaBar
+            // 
+            this.StaminaBar.Location = new System.Drawing.Point(12, 12);
+            this.StaminaBar.Name = "StaminaBar";
+            this.StaminaBar.Size = new System.Drawing.Size(327, 23);
+            this.StaminaBar.TabIndex = 0;
+            // 
+            // Staminatmr
+            // 
+            this.Staminatmr.Enabled = true;
+            this.Staminatmr.Interval = 1;
+            this.Staminatmr.Tick += new System.EventHandler(this.Staminatmr_Tick);
+            // 
             // FrmGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1484, 761);
+            this.Controls.Add(this.StaminaBar);
             this.DoubleBuffered = true;
             this.Name = "FrmGame";
             this.Text = "Fight or Flight";
@@ -63,6 +79,8 @@
         #endregion
         private System.Windows.Forms.Timer tmrBluePlane;
         private System.Windows.Forms.Timer tmrEnemyPlane;
+        private System.Windows.Forms.ProgressBar StaminaBar;
+        private System.Windows.Forms.Timer Staminatmr;
     }
 }
 

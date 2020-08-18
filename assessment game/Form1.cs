@@ -20,6 +20,55 @@ namespace assessment_game
         List<Missile> missiles = new List<Missile>();
         int BluePlanePosX, BluePlanePosY, Enemy1PosX, Enemy1PosY;
 
+        private void Staminatmr_Tick(object sender, EventArgs e)
+        {
+
+            //Parameters for the stamina bar (so that the bar does not exceed the max or min values
+            if (StaminaBar.Value > StaminaBar.Maximum - 1)
+            {
+                StaminaBar.Value = StaminaBar.Maximum;
+            }
+
+            if (StaminaBar.Value < StaminaBar.Minimum + 1)
+            {
+                StaminaBar.Value = StaminaBar.Minimum;
+            }
+
+
+            if (up)
+            {
+                if (StaminaBar.Value != StaminaBar.Minimum + 1 && StaminaBar.Value != StaminaBar.Minimum - 1)
+                {
+                    StaminaBar.Value -= 2;
+                }
+
+            }
+
+            if (down)
+            {
+                if (StaminaBar.Value < StaminaBar.Maximum)
+                {
+                    StaminaBar.Value += 10;
+                }
+
+            }
+
+                if (StaminaBar.Value < StaminaBar.Maximum)
+                {
+                    StaminaBar.Value += 1;
+                }
+
+
+
+            if (StaminaBar.Value == StaminaBar.Minimum +- 10)
+            {
+                up = false;
+            }
+
+
+
+        }
+
         public FrmGame()
 
         {
@@ -93,7 +142,7 @@ namespace assessment_game
 
         private void FrmGame_Load(object sender, EventArgs e)
         {
-           
+            StaminaBar.Value = StaminaBar.Maximum;
         }
 
 
