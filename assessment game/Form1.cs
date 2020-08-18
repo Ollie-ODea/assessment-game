@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -48,7 +49,7 @@ namespace assessment_game
             {
                 if (StaminaBar.Value < StaminaBar.Maximum)
                 {
-                    StaminaBar.Value += 10;
+                    StaminaBar.Value += 1;
                 }
 
             }
@@ -60,7 +61,7 @@ namespace assessment_game
 
 
 
-            if (StaminaBar.Value == StaminaBar.Minimum +- 10)
+            if (StaminaBar.Value < StaminaBar.Minimum + 3)
             {
                 up = false;
             }
