@@ -33,6 +33,7 @@
             this.tmrEnemyPlane = new System.Windows.Forms.Timer(this.components);
             this.StaminaBar = new System.Windows.Forms.ProgressBar();
             this.Staminatmr = new System.Windows.Forms.Timer(this.components);
+            this.DrawEnemy1tmr = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // tmrBluePlane
@@ -59,6 +60,12 @@
             this.Staminatmr.Interval = 1;
             this.Staminatmr.Tick += new System.EventHandler(this.Staminatmr_Tick);
             // 
+            // DrawEnemy1tmr
+            // 
+            this.DrawEnemy1tmr.Enabled = true;
+            this.DrawEnemy1tmr.Interval = 10000;
+            this.DrawEnemy1tmr.Tick += new System.EventHandler(this.DrawEnemy1tmr_Tick);
+            // 
             // FrmGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -81,6 +88,7 @@
         private System.Windows.Forms.Timer tmrEnemyPlane;
         private System.Windows.Forms.ProgressBar StaminaBar;
         private System.Windows.Forms.Timer Staminatmr;
+        private System.Windows.Forms.Timer DrawEnemy1tmr;
     }
 }
 

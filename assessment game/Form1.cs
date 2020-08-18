@@ -16,10 +16,12 @@ namespace assessment_game
     {
         Graphics g; //declare a graphics object called g
         BluePlane BluePlane = new BluePlane(); //create the object, BluePlane
-        Enemy1 Enemy1 = new Enemy1(); //create the object, BluePlane
+       List<Enemy1> Enemy1 = new List<Enemy1>(); //create the object, BluePlane
         bool turnLeft, turnRight, up, down, shoot;
         List<Missile> missiles = new List<Missile>();
         int BluePlanePosX, BluePlanePosY, Enemy1PosX, Enemy1PosY;
+        bool spawn;
+
 
         private void Staminatmr_Tick(object sender, EventArgs e)
         {
@@ -68,6 +70,14 @@ namespace assessment_game
 
 
 
+        }
+
+        private void DrawEnemy1tmr_Tick(object sender, EventArgs e)
+        {
+            if (spawn)
+            {
+                Enemy1.Add(new Enemy1());
+            }
         }
 
         public FrmGame()
@@ -121,16 +131,27 @@ namespace assessment_game
             }
             BluePlane.Rotateplane(BluePlane.rotationAngle, BluePlane.speed);
             BluePlane.MoveBluePlane();
-            Enemy1.MoveEnemy1();
-            Enemy1.RotateEnemy1();
+            foreach (Enemy1 Enemy1 in Enemy1)
+            {
+                Enemy1.MoveEnemy1();
+                Enemy1.RotateEnemy1();
+            }
+
 
 
             BluePlanePosX = BluePlane.BluePlaneRec.Location.X;
             BluePlanePosY = BluePlane.BluePlaneRec.Location.Y;
-            Enemy1PosX = Enemy1.Enemy1Rec.Location.X;
-            Enemy1PosY = Enemy1.Enemy1Rec.Location.Y;
 
-            Enemy1.rotationAngle = (int)Enemy1.CalculateAngle(Enemy1PosX, Enemy1PosY, BluePlanePosX, BluePlanePosY);
+            foreach (Enemy1 Enemy1 in Enemy1)
+            {
+
+
+                Enemy1PosX = Enemy1.Enemy1Rec.Location.X;
+                Enemy1PosY = Enemy1.Enemy1Rec.Location.Y;
+
+                Enemy1.rotationAngle = (int)Enemy1.CalculateAngle(Enemy1PosX, Enemy1PosY, BluePlanePosX, BluePlanePosY);
+
+            }
             Invalidate();
 
             
@@ -138,12 +159,13 @@ namespace assessment_game
 
         private void tmrEnemyPlane_Tick(object sender, EventArgs e)
         {
-           
+
         }
 
         private void FrmGame_Load(object sender, EventArgs e)
         {
             StaminaBar.Value = StaminaBar.Maximum;
+            spawn = true;
         }
 
 
@@ -153,7 +175,6 @@ namespace assessment_game
             //get the graphics used to paint on the Form control
             g = e.Graphics;
             //Draw enemy plane
-            Enemy1.DrawEnemy1(g);
             //Draw the BluePlane
             BluePlane.DrawBluePlane(g);
 
@@ -162,6 +183,11 @@ namespace assessment_game
             {
                 m.drawMissile(g);
                 m.moveMissile(g);
+            }
+
+            foreach (Enemy1 Enemy in Enemy1)
+            {
+                Enemy.DrawEnemy1(g);
             }
         }
         //Key events

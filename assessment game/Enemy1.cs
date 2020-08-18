@@ -32,7 +32,7 @@ namespace assessment_game
             width = 30;
             height = 30;
             rotationAngle = 0;
-            speed = 3;
+            speed = 5;
             //planetImage contains the BluePlane.png image
             Enemy1Image = Properties.Resources.Enemy1;
             Enemy1Rec = new Rectangle(x, y, width, height);
