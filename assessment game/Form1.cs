@@ -20,6 +20,7 @@ namespace assessment_game
         bool turnLeft, turnRight, up, down, shoot;
         List<Missile> missiles = new List<Missile>();
         int BluePlanePosX, BluePlanePosY, Enemy1PosX, Enemy1PosY;
+        int Espeed;
         bool spawn;
 
 
@@ -74,10 +75,7 @@ namespace assessment_game
 
         private void DrawEnemy1tmr_Tick(object sender, EventArgs e)
         {
-            if (spawn)
-            {
                 Enemy1.Add(new Enemy1());
-            }
         }
 
         public FrmGame()
@@ -152,6 +150,26 @@ namespace assessment_game
                 Enemy1.rotationAngle = (int)Enemy1.CalculateAngle(Enemy1PosX, Enemy1PosY, BluePlanePosX, BluePlanePosY);
 
             }
+
+
+
+            foreach (Enemy1 Enemy in Enemy1)
+            {
+
+                foreach (Missile m in missiles)
+                {
+                    if (Enemy.Enemy1Rec.IntersectsWith(m.missileRec))
+                    {
+                        missiles.Remove(m);// remove missile
+                        Enemy1.Remove(Enemy);
+
+                        break;
+                    }
+                }
+                break;
+
+            }
+
             Invalidate();
 
             
@@ -160,12 +178,12 @@ namespace assessment_game
         private void tmrEnemyPlane_Tick(object sender, EventArgs e)
         {
 
+
         }
 
         private void FrmGame_Load(object sender, EventArgs e)
         {
             StaminaBar.Value = StaminaBar.Maximum;
-            spawn = true;
         }
 
 

@@ -16,8 +16,8 @@ namespace assessment_game
         public int x, y, width, height;//variables for the rectangle
         public Image Enemy1Image;//variable for the planet's image
         public double xSpeed, ySpeed;
-        int speed;
         public int rotationAngle;
+        int speed;
         public Matrix matrix;
         Point centre;
 
