@@ -17,9 +17,9 @@ namespace assessment_game
         public Image Enemy1Image;//variable for the planet's image
         public double xSpeed, ySpeed;
         public int rotationAngle;
-        int speed;
         public Matrix matrix;
         Point centre;
+        Random rand = new Random();
 
 
         public Rectangle Enemy1Rec;//variable for a rectangle to place our image in
@@ -27,12 +27,11 @@ namespace assessment_game
 
         public Enemy1()
         {
-            x = 100;
-            y = 100;
+            x = 0;
+            y = rand.Next(0,665);
             width = 30;
             height = 30;
             rotationAngle = 0;
-            speed = 5;
             //planetImage contains the BluePlane.png image
             Enemy1Image = Properties.Resources.Enemy1;
             Enemy1Rec = new Rectangle(x, y, width, height);
@@ -70,7 +69,7 @@ namespace assessment_game
             y -= (int)ySpeed;
             Enemy1Rec.Location = new Point(x, y);//missiles new location
         }
-        public void RotateEnemy1()
+        public void RotateEnemy1(int speed)
         {
             xSpeed = speed * (Math.Cos((rotationAngle - 90) * Math.PI / 180));
             ySpeed = speed * (Math.Sin((rotationAngle + 90) * Math.PI / 180));

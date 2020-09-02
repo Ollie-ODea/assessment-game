@@ -20,7 +20,6 @@ namespace assessment_game
         Point centre;
 
         public Rectangle BluePlaneRec;//variable for a rectangle to place our image in
-        public int score;
         //Create a constructor (initialises the values of the fields)
         public BluePlane()
         {
