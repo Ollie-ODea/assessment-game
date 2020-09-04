@@ -37,7 +37,6 @@
             this.lblAmmo = new System.Windows.Forms.Label();
             this.lblMissileTime = new System.Windows.Forms.Label();
             this.TmrAmmo = new System.Windows.Forms.Timer(this.components);
-            this.PanlGame = new System.Windows.Forms.Panel();
             this.tmrCoin = new System.Windows.Forms.Timer(this.components);
             this.txtName = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -48,9 +47,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
+            this.PanlGame = new System.Windows.Forms.Panel();
+            this.deathpic = new System.Windows.Forms.PictureBox();
             this.Pauseimg = new System.Windows.Forms.PictureBox();
-            this.PanlGame.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.PanlGame.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.deathpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pauseimg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,16 +109,6 @@
             this.TmrAmmo.Interval = 1;
             this.TmrAmmo.Tick += new System.EventHandler(this.TmrAmmo_Tick);
             // 
-            // PanlGame
-            // 
-            this.PanlGame.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.PanlGame.Controls.Add(this.Pauseimg);
-            this.PanlGame.Location = new System.Drawing.Point(12, 41);
-            this.PanlGame.Name = "PanlGame";
-            this.PanlGame.Size = new System.Drawing.Size(900, 650);
-            this.PanlGame.TabIndex = 3;
-            this.PanlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.PanlGame_Paint);
-            // 
             // tmrCoin
             // 
             this.tmrCoin.Interval = 1;
@@ -128,6 +120,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 4;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // menuStrip1
             // 
@@ -204,8 +197,32 @@
             this.lblScore.TabIndex = 10;
             this.lblScore.Text = "0";
             // 
+            // PanlGame
+            // 
+            this.PanlGame.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.PanlGame.BackgroundImage = global::assessment_game.Properties.Resources.Sky;
+            this.PanlGame.Controls.Add(this.deathpic);
+            this.PanlGame.Controls.Add(this.Pauseimg);
+            this.PanlGame.Location = new System.Drawing.Point(12, 41);
+            this.PanlGame.Name = "PanlGame";
+            this.PanlGame.Size = new System.Drawing.Size(900, 650);
+            this.PanlGame.TabIndex = 3;
+            this.PanlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.PanlGame_Paint);
+            // 
+            // deathpic
+            // 
+            this.deathpic.BackColor = System.Drawing.Color.Transparent;
+            this.deathpic.Image = global::assessment_game.Properties.Resources.You_Died_Text;
+            this.deathpic.Location = new System.Drawing.Point(341, 287);
+            this.deathpic.Name = "deathpic";
+            this.deathpic.Size = new System.Drawing.Size(206, 74);
+            this.deathpic.TabIndex = 1;
+            this.deathpic.TabStop = false;
+            this.deathpic.Visible = false;
+            // 
             // Pauseimg
             // 
+            this.Pauseimg.BackColor = System.Drawing.Color.Transparent;
             this.Pauseimg.Image = global::assessment_game.Properties.Resources.Pausedimg;
             this.Pauseimg.Location = new System.Drawing.Point(246, 124);
             this.Pauseimg.Name = "Pauseimg";
@@ -238,9 +255,10 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FrmGame_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmGame_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmGame_KeyUp);
-            this.PanlGame.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.PanlGame.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.deathpic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pauseimg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -268,6 +286,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.PictureBox Pauseimg;
+        private System.Windows.Forms.PictureBox deathpic;
     }
 }
 

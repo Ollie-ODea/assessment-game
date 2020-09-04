@@ -32,8 +32,11 @@ namespace assessment_game
         Rectangle CoinRec = new Rectangle(0, 0, 15, 25);
         Image CoinImage = Properties.Resources.Coin;
 
+        Rectangle ExploRec = new Rectangle(0, 0, 20, 20);
+        Image ExploImage = Properties.Resources.Explosion;
+
         int Score = 0;
-        
+        bool death;
 
 
 
@@ -109,6 +112,7 @@ namespace assessment_game
             //Draw the BluePlane
             g.DrawImage(AmmoImage, AmmoRec);
             g.DrawImage(CoinImage, CoinRec);
+            g.DrawImage(ExploImage, ExploRec);
 
             BluePlane.DrawBluePlane(g);
 
@@ -166,6 +170,35 @@ namespace assessment_game
 
         }
 
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            {
+
+                string context = txtName.Text;
+                bool isletter = true;
+                //for loop checks for letters as characters are entered
+                for (int i = 0; i < context.Length; i++)
+                {
+                    if (!char.IsLetter(context[i]))//if current character not a letter
+                    {
+                        isletter = false;//make isletter false
+                        break; // exit the for loop
+                    }
+                }
+                //if not a letter clear the textbox and focus on it
+                // to enter name again
+                if (isletter == false)
+                {
+                    txtName.Clear();
+                    txtName.Focus();
+                }
+                else
+                {
+                    startToolStripMenuItem.Enabled = true;
+                }
+            }
+        }
+
         public FrmGame()
 
         {
@@ -217,6 +250,7 @@ namespace assessment_game
             {
                 missiles.Add(new Missile(BluePlane.BluePlaneRec, BluePlane.rotationAngle));
                 numberOFMissiles--;
+                shoot = false;
 
             }
             if (numberOFMissiles == 0)
@@ -264,7 +298,31 @@ namespace assessment_game
                 BluePlane.y = 613;
             }
 
+            foreach (Enemy1 Enemy1 in Enemy1)
+            {
+                if (BluePlane.BluePlaneRec.IntersectsWith(Enemy1.Enemy1Rec))
+                {
+                    death = true;
+                }
+            }
 
+            if (death == true)
+            {
+
+                tmrBluePlane.Enabled = false;
+                tmrCoin.Enabled = false;
+                TmrAmmo.Enabled = false;
+                tmrEnemyPlane.Enabled = false;
+                Staminatmr.Enabled = false;
+                DrawEnemy1tmr.Enabled = false;
+
+                Pauseimg.Visible = false;
+                deathpic.Visible = true;
+
+                ExploRec.X = BluePlane.BluePlaneRec.X;
+                ExploRec.Y = BluePlane.BluePlaneRec.Y;
+
+            }
 
 
             PanlGame.Invalidate(); 
@@ -316,6 +374,7 @@ namespace assessment_game
             DrawEnemy1tmr.Enabled = false;
 
             Pauseimg.Visible = false;
+            deathpic.Visible = false;
         }
 
 

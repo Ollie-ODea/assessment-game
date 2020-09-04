@@ -103,6 +103,16 @@ namespace assessment_game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Explosion {
+            get {
+                object obj = ResourceManager.GetObject("Explosion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap missile_small {
             get {
                 object obj = ResourceManager.GetObject("missile_small", resourceCulture);
@@ -126,6 +136,26 @@ namespace assessment_game.Properties {
         internal static System.Drawing.Bitmap RedPlane {
             get {
                 object obj = ResourceManager.GetObject("RedPlane", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sky {
+            get {
+                object obj = ResourceManager.GetObject("Sky", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap You_Died_Text {
+            get {
+                object obj = ResourceManager.GetObject("You Died Text", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

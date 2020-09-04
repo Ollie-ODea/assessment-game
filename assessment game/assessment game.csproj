@@ -114,5 +114,14 @@
   <ItemGroup>
     <None Include="Resources\Pausedimg.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sky.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cooltext361531716963596.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pixel Explosion - Imgur.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
