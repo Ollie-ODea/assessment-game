@@ -53,7 +53,7 @@ namespace assessment_game
             g.DrawImage(missile, missileRec);
 
         }
-        public void moveMissile(Graphics g)
+        public void moveMissile()
         {
             x += (int)xSpeed;//cast double to an integer value
             y -= (int)ySpeed;

@@ -57,6 +57,7 @@ namespace assessment_game
 
         public double CalculateAngle(int startX, int startY, int arrivalX, int arrivalY)
         {
+            //mkae the enemy point toward the blueplane
             var radian = Math.Atan2((arrivalY - startY), (arrivalX - startX));
             var angle = (90 + radian * (180 / Math.PI) + 360) % 360;
 
@@ -65,12 +66,16 @@ namespace assessment_game
 
         public void MoveEnemy1()
         {
+            //move the enemy toward the blue plane
             x += (int)xSpeed;
             y -= (int)ySpeed;
             Enemy1Rec.Location = new Point(x, y);//missiles new location
+
+
         }
         public void RotateEnemy1(int speed)
         {
+            //find the rotation angle with the speed
             xSpeed = speed * (Math.Cos((rotationAngle - 90) * Math.PI / 180));
             ySpeed = speed * (Math.Sin((rotationAngle + 90) * Math.PI / 180));
         }

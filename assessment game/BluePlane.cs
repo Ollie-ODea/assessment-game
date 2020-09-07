@@ -53,12 +53,23 @@ namespace assessment_game
 
         public void MoveBluePlane()
         {
+            //move the plane with the speeds ot x and y
             x += (int)xSpeed;
             y -= (int)ySpeed;
             BluePlaneRec.Location = new Point(x, y);//missiles new location
+
+        }
+        public void Start(int startx, int starty)
+        {
+            x = startx;
+            x = starty;
+            xSpeed = 0;
+            ySpeed = 0;
+            rotationAngle = 0;
         }
         public void Rotateplane(int BluePlaneRotate, int Speed)
         {
+            //find the rotation angle of the blueplane
             xSpeed = Speed * (Math.Cos((BluePlaneRotate - 90) * Math.PI / 180));
             ySpeed = Speed * (Math.Sin((BluePlaneRotate + 90) * Math.PI / 180));
         }
